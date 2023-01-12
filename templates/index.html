@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+</head>
+
+<body>
+    <!--Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/templates/index.html">Agenda</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Container-->
+    <div class="container my-2 py-2">
+        <div class="row">
+            <!-- Formulario -->
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div id="alert" class="alert" role="alert" hidden="true">
+                    <button class="btn-close" type="button" data-dismiss="alert" onclick="messageHidden">&times;</button>
+                        <strong class="text-dark"></strong>
+                </div>
+                <form id="formPerson" method="post" action="http://127.0.0.1:5500/templates/index.html">
+                    <div class="card">
+                        <h2 class="m-2 p-1 text-center">Registro</h2>
+                        <div class="card-body">
+                            <!-- Nombre -->
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="name" placeholder="Nombre" autofocus required="true">
+                            </div>
+                            <!-- Dirección -->
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Dirección</label>
+                                <input type="text" class="form-control" id="address" placeholder="Dirección" required>
+                            </div>
+                            <!-- Teléfono -->
+                            <div class="mb-3">
+                                <label for="phone_number" class="form-label">Teléfono</label>
+                                <input type="text" class="form-control" id="phone_number" placeholder="Teléfono" required>
+                            </div>
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email" required>
+                            </div>
+                            <!-- Button Add -->
+                            <div class="d-grid gap-2">
+                                <input id="btn_add" class="btn btn-success" type="submit" value="Agregar">
+                            <button id="btn_clear" class="btn btn-outline-secondary"  type="submit">Limpiar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <!-- Table -->
+            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                <h2 class="center">Contactos</h2>
+                <table id="table" class="table table-primary table-striped table-hover center table-sm">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Dirección</th>
+                            <th>Email</th>
+                            <th colspan="2">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- contenido -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <!-- JavaScript -->
+    <script type="module" src="/js/index.js"></script>
+</body>
+
+</html>

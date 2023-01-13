@@ -1,6 +1,6 @@
-export const persons = [
+export const data = [
     {
-        id: Date.now(),
+        id: 1,
         name: 'Alan Medrano',
         address: 'Felipe Berriozabal',
         phone_number: '5528829252',
@@ -8,7 +8,7 @@ export const persons = [
 
     },
     {
-        id: Date.now(),
+        id: 2,
         name: 'Mario Medrano',
         address: 'Felipe Berriozabal',
         phone_number: '5528829252',
@@ -16,7 +16,7 @@ export const persons = [
 
     },
     {
-        id: Date.now(),
+        id: 3,
         name: 'Felicidad Rodriguez',
         address: 'Av. de las torres',
         phone_number: '5574777910',
@@ -24,7 +24,7 @@ export const persons = [
 
     },
     {
-        id: Date.now(),
+        id: 4,
         name: 'Mauricio Medrano',
         address: 'Felipe Berriozabal',
         phone_number: '5528829252',
@@ -32,7 +32,7 @@ export const persons = [
 
     },
     {
-        id: Date.now(),
+        id: 5,
         name: 'Julian Casablancas',
         address: 'Av. Siempre Viva',
         phone_number: '5511223445',
@@ -40,6 +40,8 @@ export const persons = [
 
     }
 ];
+
+
 
 export const person = {
     id: 0,

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/main.css" />
 </head>
 
 <body>
@@ -29,23 +29,69 @@
             </div>
         </div>
     </nav>
+
+    <!-- Modal -->
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Persona</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <!-- Nombre -->
+                        <div class="mb-3">
+                            <label for="modal_name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="modal_name" placeholder="Nombre" autofocus
+                                required="true">
+                        </div>
+                        <!-- Dirección -->
+                        <div class="mb-3">
+                            <label for="modal_address" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="modal_address" placeholder="Dirección" required>
+                        </div>
+                        <!-- Teléfono -->
+                        <div class="mb-3">
+                            <label for="modal_phone_number" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="modal_phone_number" placeholder="Teléfono"
+                                required>
+                        </div>
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="modal_email" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="modal_email" placeholder="Email" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Container-->
     <div class="container my-2 py-2">
         <div class="row">
-            <!-- Formulario -->
+            <!-- Alert -->
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                <div id="alert" class="alert" role="alert" hidden="true">
-                    <button class="btn-close" type="button" data-dismiss="alert" onclick="messageHidden">&times;</button>
-                        <strong class="text-dark"></strong>
+                <div id="alert" class="alert alert-dismissible fade" role="alert">
+                    <strong id="message-alert" class="center"></strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-                <form id="formPerson" method="post" action="http://127.0.0.1:5500/templates/index.html">
+
+                <!-- Formulario -->
+                <form id="formPerson" method="post">
                     <div class="card">
                         <h2 class="m-2 p-1 text-center">Registro</h2>
                         <div class="card-body">
                             <!-- Nombre -->
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="name" placeholder="Nombre" autofocus required="true">
+                                <input type="text" class="form-control" id="name" placeholder="Nombre" autofocus
+                                    required="true">
                             </div>
                             <!-- Dirección -->
                             <div class="mb-3">
@@ -55,7 +101,8 @@
                             <!-- Teléfono -->
                             <div class="mb-3">
                                 <label for="phone_number" class="form-label">Teléfono</label>
-                                <input type="text" class="form-control" id="phone_number" placeholder="Teléfono" required>
+                                <input type="text" class="form-control" id="phone_number" placeholder="Teléfono"
+                                    required>
                             </div>
                             <!-- Email -->
                             <div class="mb-3">
@@ -65,7 +112,6 @@
                             <!-- Button Add -->
                             <div class="d-grid gap-2">
                                 <button id="btn_add" class="btn btn-success" type="submit">Agregar</button>
-                                <button id="btn_clear" class="btn btn-outline-secondary">Limpiar</button>
                             </div>
                         </div>
                     </div>
@@ -83,7 +129,7 @@
                             <th>Dirección</th>
                             <th>Teléfono</th>
                             <th>Email</th>
-                            <th colspan="2">Opciones</th>
+                            <th scope="col">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>

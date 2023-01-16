@@ -20,11 +20,19 @@ function addPersonTable(person, tbody) {
     // Agregamos los buttons
     let btnEdit = document.createElement('button');
     btnEdit.classList.add('btn', 'btn-info', 'my-1', 'mx-1');
+    btnEdit.setAttribute('data-toggle', 'modal');
+    btnEdit.setAttribute('data-bs-target', '#modal');
     btnEdit.innerText = 'Editar';
+    btnEdit.onclick = (e) => {
+        editPerson(person.id);
+    }
 
     let btnRemove = document.createElement('button');
     btnRemove.classList.add('btn', 'btn-danger', 'my-1', 'mx-1');
     btnRemove.innerText = 'Eliminar';
+    btnRemove.onclick = (e) => {
+        removePerson(person.id, person.name);
+    }
 
     row.children[5].appendChild(btnEdit);
     row.children[5].appendChild(btnRemove);
@@ -38,6 +46,20 @@ function loadData() {
     storagePerson.persons.forEach((p) => {
         addPersonTable(p, tbody);
     });
+}
+
+function editPerson(id) {
+    return;
+}
+
+function removePerson(id, name) {
+    // Eliminamos el nodo del documento
+    document.getElementById(id).remove();
+    // Eliminamos a la persona del documento
+    messageAlert.classList.add('show', 'alert-danger');
+    message.innerText = `Se elimino a ${name}`;
+    storagePerson.removePerson(id);
+
 }
 
 function add(event) {
@@ -60,34 +82,33 @@ function add(event) {
 
         const index = storagePerson.addPerson({...person});
         person.id = index;
+        //console.log(person.id);
         addPersonTable({...person}, tbody);
-        //console.log(persons);
-        // Recargar la table
+
+        // alert
+        messageAlert.classList.add('show', 'alert-info');
+        message.innerText = `Se agrego a ${person.name}`;
+        // Clear
+        txtName.value = '';
+        txtAddress.value = '';
+        txtPhone.value = '';
+        txtEmail.value = '';
 
         
     } else {
         messageAlert.classList.add('alert-danger');
-        messageAlert.hidden = false;
+        // messageAlert.hidden = false;
     }
 
 }
 
-function clear() {
-    const txtName = document.getElementById('name');
-    const txtAddress = document.getElementById('address');
-    const txtPhone = document.getElementById('phone_number');
-    const txtEmail = document.getElementById('email');
-    txtName.value = '';
-    txtAddress.value = '';
-    txtPhone.value = '';
-    txtEmail.value = '';
-}
 
 let band = false;
 const messageAlert = document.getElementById('alert');
+const message = document.getElementById('message-alert');
 const form = document.getElementById('formPerson');
 form.addEventListener('submit', add);
-const btnClear = document.getElementById('btn_clear');
-btnClear.onclick = clear();
 const storagePerson = new StoragePerson();
+
 loadData();
+//console.log(storagePerson.currentId);

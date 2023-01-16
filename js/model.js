@@ -28,10 +28,10 @@ export class StoragePerson {
 
     addPerson(person) {
         person.id = this.currentId;
-        this.currentId++;
         this.persons.push(person);
         this.save();
-        return this.currentId;
+        this.currentId++;
+        return person.id;
     }
 
     editPerson(id, person) {
@@ -46,7 +46,9 @@ export class StoragePerson {
 
     removePerson(id) {
         const index = this.findPerson(id);
-        this.persons.slice(index, 1); // Eliminamos un elemento del arreglo
+        //console.log(index);
+        this.persons.splice(index, 1); // Eliminamos un elemento del arreglo
+        console.log(this.persons);
         this.save();
     }
 

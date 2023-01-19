@@ -1,6 +1,6 @@
 import { data } from "./data.js";
 
-export class StoragePerson {
+export class ListPersons {
     constructor() {
         this.persons = JSON.parse(localStorage.getItem('persons'));
         this.currentId = 0;
@@ -36,19 +36,21 @@ export class StoragePerson {
 
     editPerson(id, person) {
         const index = this.findPerson(id);
-        person = {}
+        person = {};
         this.persons[index].name = person.name;
         this.persons[index].address = person.address;
         this.persons[index].phone_number = person.phone_number;
         this.persons[index].email = persons.email;
         this.save();
+        return {...this.persons[index]};
     }
 
     removePerson(id) {
         const index = this.findPerson(id);
         //console.log(index);
         this.persons.splice(index, 1); // Eliminamos un elemento del arreglo
-        console.log(this.persons);
+        //console.log(this.persons);
+        this.currentId--;
         this.save();
     }
 
@@ -56,3 +58,11 @@ export class StoragePerson {
         return this.persons.findIndex((p) => p.id === id);
     }
 }
+
+export const person = {
+    id: 0,
+    name: '',
+    address: '',
+    phone_number: '',
+    email: ''
+};

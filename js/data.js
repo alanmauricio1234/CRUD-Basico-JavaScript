@@ -43,10 +43,3 @@ export const data = [
 
 
 
-export const person = {
-    id: 0,
-    name: '',
-    address: '',
-    phone_number: '',
-    email: ''
-};

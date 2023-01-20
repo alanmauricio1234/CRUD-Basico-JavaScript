@@ -36,13 +36,11 @@ export class ListPersons {
 
     editPerson(id, person) {
         const index = this.findPerson(id);
-        person = {};
         this.persons[index].name = person.name;
         this.persons[index].address = person.address;
         this.persons[index].phone_number = person.phone_number;
-        this.persons[index].email = persons.email;
+        this.persons[index].email = person.email;
         this.save();
-        return {...this.persons[index]};
     }
 
     removePerson(id) {

@@ -1,4 +1,5 @@
 import { Alert } from "./alert.js";
+import { Modal } from "./modal.js";
 import { person } from "./model.js";
 
 export class View {
@@ -10,11 +11,13 @@ export class View {
             event.preventDefault(); // Evita que el formulario se envíe
             this.add()
         });
+        this.modalEdit = new Modal();
+        this.modalEdit.onClick((person) => { this.edit(person) });
     }
 
-    setAlert(type) {
+    setAlert(type, contentId) {
         if (!this.mapAlerts.has(type)) {
-            this.mapAlerts.set(type, new Alert(type));
+            this.mapAlerts.set(type, new Alert(type, contentId));
         }
     }
 
@@ -38,7 +41,7 @@ export class View {
         <td>${person.phone_number}</td>
         <td>${person.email}</td>
         <td class="center" colspan="2" ></td>
-    `;
+        `;
 
         // Agregamos los buttons
         const btnEdit = document.createElement("button");
@@ -47,7 +50,7 @@ export class View {
         btnEdit.setAttribute("data-bs-target", "#edit-modal");
         btnEdit.innerText = "Editar";
         btnEdit.onclick = (e) => {
-            this.edit(person);
+            this.modalEdit.setPerson(person);
         };
 
         const btnRemove = document.createElement("button");
@@ -94,6 +97,14 @@ export class View {
     }
 
     edit(person) {
+        console.log('Entra en la View');
+        console.log(person);
+        this.listPersons.editPerson(person.id, person);
+        const row = document.getElementById(person.id);
+        row.children[1].value = person.name;
+        row.children[2].value = person.address;
+        row.children[3].value = person.phone_number;
+        row.children[4].value = person.email;
         return;
      }
 

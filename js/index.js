@@ -4,6 +4,6 @@ import { View } from "./view.js";
 const view = new View();
 const list = new ListPersons();
 view.setListPersons(list);
-view.setAlert('success');
-view.setAlert('danger');
+view.setAlert('success', 'alerts');
+view.setAlert('danger', 'alerts');
 view.render();

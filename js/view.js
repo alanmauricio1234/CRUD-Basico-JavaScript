@@ -1,5 +1,5 @@
 import { Alert } from "./alert.js";
-import { Modal } from "./modal.js";
+import { Modal, ModalView } from "./modal.js";
 import { person } from "./model.js";
 
 export class View {
@@ -11,6 +11,7 @@ export class View {
             event.preventDefault(); // Evita que el formulario se envíe
             this.add()
         });
+        this.modalView = new ModalView();
         this.modalEdit = new Modal();
         this.modalEdit.onClick((person) => { this.edit(person) });
     }
@@ -37,11 +38,22 @@ export class View {
         row.innerHTML = `
         <td>${person.id}</td>
         <td>${person.name}</td>
-        <td>${person.address}</td>
-        <td>${person.phone_number}</td>
-        <td>${person.email}</td>
+        <td></td>
         <td class="center" colspan="2" ></td>
         `;
+
+        // Se agrega el button del modal de detalle
+        const btnDetails = document.createElement('button');
+        btnDetails.innerText = 'Detalles';
+        btnDetails.classList.add('btn', 'btn-primary');
+        btnDetails.setAttribute('data-bs-toggle', 'modal');
+        btnDetails.setAttribute("data-bs-toggle", "modal");
+        btnDetails.setAttribute("data-bs-target", "#view-modal");
+        btnDetails.onclick = (e) => {
+            this.modalView.showPerson(person);
+
+        };
+
 
         // Agregamos los buttons
         const btnEdit = document.createElement("button");
@@ -59,9 +71,10 @@ export class View {
         btnRemove.onclick = (e) => {
             this.remove(person.id, person.name);
         };
-
-        row.children[5].appendChild(btnEdit);
-        row.children[5].appendChild(btnRemove);
+        // agregamos a la fila
+        row.children[2].appendChild(btnDetails);
+        row.children[3].appendChild(btnEdit);
+        row.children[3].appendChild(btnRemove);
 
         //Agregamos la fila al cuerpo de la tabla
         this.tbody.appendChild(row);
@@ -97,15 +110,15 @@ export class View {
     }
 
     edit(person) {
-        console.log('Entra en la View');
-        console.log(person);
+        // console.log('Entra en la View');
+        // console.log(person);
         this.listPersons.editPerson(person.id, person);
         const row = document.getElementById(person.id);
-        row.children[1].value = person.name;
-        row.children[2].value = person.address;
-        row.children[3].value = person.phone_number;
-        row.children[4].value = person.email;
-        return;
+        row.cells[1].innerText = person.name;
+        // row.cells[2].innerText = person.address;
+        // row.cells[3].innerText = person.phone_number;
+        // row.cells[4].innerText = person.email;
+        this.mapAlerts.get('info').show(`Se modificó a ${person.name}`);
      }
 
     remove(id, name) {

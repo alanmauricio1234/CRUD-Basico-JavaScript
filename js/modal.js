@@ -28,7 +28,7 @@ export class Modal {
                 this.alert.show('Los valores no deben ser vacíos :(');
             }
             // Esconder el modal
-            console.log('Entra en el modal');
+            //console.log('Entra en el modal');
             callback({
                 'id': this.person.id,
                 'name': this.name.value,
@@ -42,5 +42,21 @@ export class Modal {
     valuesIsEmpty() {
         return this.name.value === '' && this.address.value === '' &&
                 this.phone_number.value === '' && this.email.value === '';
+    }
+}
+
+export class ModalView {
+    constructor() {
+        this.name = document.getElementById('person-name');
+        this.address = document.getElementById('person-address');
+        this.phone_number = document.getElementById('person-phone');
+        this.email = document.getElementById('person-email');
+    }
+
+    showPerson(person) {
+        this.name.innerText = person.name;
+        this.address.innerText = person.address;
+        this.phone_number.innerText = person.phone_number;
+        this.email.innerText = person.email;
     }
 }

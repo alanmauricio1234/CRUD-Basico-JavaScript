@@ -69,14 +69,41 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button id="btn_modal_edit" type="button" class="btn btn-primary">Editar</button>
+                    <button id="btn_modal_edit" type="button" class="btn btn-primary" data-bs-dismiss="modal">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal View -->
+    <div class="modal" tabindex="-1" id="view-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalles del Contacto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card border-primary mb-3 text-center">
+                        <div class="card-body">
+                            <h5 class="card-title" id="person-name"></h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" id="person-address"></li>
+                                <li class="list-group-item" id="person-phone"></li>
+                                <li class="list-group-item" id="person-email"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Container-->
-    <div class="container my-2 py-2">
+    <div class="container my-3 mx-2 py-2">
         <!-- Row -->
         <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -85,7 +112,7 @@
 
                 <!-- Formulario -->
                 <form id="formPerson" method="post">
-                    <div class="card">
+                    <div class="card my-4">
                         <h2 class="m-2 p-1 text-center">Registro</h2>
                         <div class="card-body">
                             <!-- Nombre -->
@@ -122,14 +149,12 @@
             <!-- Table -->
             <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
                 <h2 class="center">Contactos</h2>
-                <table id="table" class="table table-dark table-striped table-hover table-sm">
+                <table id="table" class="table table-dark table-striped table-hover table-sm center">
                     <thead>
                         <tr class="center">
                             <th>Id</th>
                             <th>Nombre</th>
-                            <th>Dirección</th>
-                            <th>Teléfono</th>
-                            <th>Email</th>
+                            <th>Detalles</th>
                             <th scope="col">Opciones</th>
                         </tr>
                     </thead>

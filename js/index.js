@@ -6,4 +6,5 @@ const list = new ListPersons();
 view.setListPersons(list);
 view.setAlert('success', 'alerts');
 view.setAlert('danger', 'alerts');
+view.setAlert('info', 'alerts');
 view.render();
